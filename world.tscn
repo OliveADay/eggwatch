@@ -1,3 +1,21 @@
 [gd_scene format=3 uid="uid://bi68v4umnrs1"]
 
+[ext_resource type="Texture2D" uid="uid://dr3l35lb4x8xm" path="res://egg-Sheet.png" id="1_f3sb7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3sb7"]
+radius = 7.0
+
 [node name="World" type="Node2D" unique_id=1775957039]
+
+[node name="egg" type="Area2D" parent="." unique_id=502374342]
+position = Vector2(124, 71)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="egg" unique_id=1239039651]
+texture_filter = 1
+texture = ExtResource("1_f3sb7")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="egg" unique_id=85380964]
+shape = SubResource("CircleShape2D_f3sb7")
