@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://bi68v4umnrs1"]
 
+[ext_resource type="Script" uid="uid://bk0ijf2fsvedc" path="res://knife_spawner.gd" id="1_036b0"]
 [ext_resource type="Texture2D" uid="uid://dr3l35lb4x8xm" path="res://egg-Sheet.png" id="1_f3sb7"]
+[ext_resource type="PackedScene" uid="uid://dbne6npni58we" path="res://knife.tscn" id="2_fj7yv"]
+[ext_resource type="Script" uid="uid://dwp72y4s8cqbk" path="res://hammer.gd" id="3_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://d3cmprwdxbko8" path="res://hammer.png" id="4_036b0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3sb7"]
 radius = 7.0
 
-[node name="World" type="Node2D" unique_id=1775957039]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwbse"]
+size = Vector2(22, 26)
 
-[node name="egg" type="Area2D" parent="." unique_id=502374342]
+[node name="World" type="Node2D" unique_id=1775957039]
+script = ExtResource("1_036b0")
+
+[node name="egg" type="Area2D" parent="." unique_id=502374342 groups=["egg"]]
 position = Vector2(124, 71)
 metadata/_edit_group_ = true
 
@@ -19,3 +27,21 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="egg" unique_id=85380964]
 shape = SubResource("CircleShape2D_f3sb7")
+
+[node name="Knife" parent="." unique_id=1213006438 instance=ExtResource("2_fj7yv")]
+z_index = 1
+position = Vector2(138, -14)
+rotation = 1.5707964
+
+[node name="hammer" type="Area2D" parent="." unique_id=1579423027]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_aqk2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="hammer" unique_id=1564674870]
+z_index = 2
+texture_filter = 1
+texture = ExtResource("4_036b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer" unique_id=703983377]
+shape = SubResource("RectangleShape2D_dwbse")

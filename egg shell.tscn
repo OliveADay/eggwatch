@@ -5,8 +5,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u5ps"]
 
 [node name="EggShell" type="Node2D" unique_id=978378970]
+metadata/_edit_group_ = true
 
 [node name="shell" type="RigidBody2D" parent="." unique_id=299457585]
+collision_layer = 64
+collision_mask = 64
+linear_velocity = Vector2(-50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shell" unique_id=1296841336]
 shape = SubResource("RectangleShape2D_4u5ps")
@@ -19,6 +23,7 @@ vframes = 2
 frame = 1
 
 [node name="shell_2" type="RigidBody2D" parent="." unique_id=1518277996]
+linear_velocity = Vector2(50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="shell_2" unique_id=1871748353]
 shape = SubResource("RectangleShape2D_4u5ps")
@@ -33,6 +38,7 @@ frame = 2
 [node name="yoke" type="RigidBody2D" parent="." unique_id=365257224]
 collision_layer = 128
 collision_mask = 128
+linear_velocity = Vector2(0, -5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="yoke" unique_id=131598407]
 shape = SubResource("RectangleShape2D_4u5ps")

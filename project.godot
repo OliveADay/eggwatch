@@ -20,6 +20,10 @@ window/size/viewport_width=256
 window/size/viewport_height=144
 window/stretch/mode="viewport"
 
+[global_group]
+
+egg=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

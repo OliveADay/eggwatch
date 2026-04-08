@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dbne6npni58we"]
+
+[ext_resource type="Script" uid="uid://nvv01lvqikcm" path="res://knife.gd" id="1_8wt88"]
+[ext_resource type="Texture2D" uid="uid://d216k6f7becl8" path="res://missile.png" id="1_mawn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wt88"]
+size = Vector2(20, 5)
+
+[node name="Knife" type="RigidBody2D" unique_id=1213006438]
+collision_layer = 3
+script = ExtResource("1_8wt88")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2120832809]
+texture_filter = 1
+scale = Vector2(-1, 1)
+texture = ExtResource("1_mawn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1468281849]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_8wt88")
