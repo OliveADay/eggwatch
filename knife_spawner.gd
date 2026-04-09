@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(knife)
 		knife.position = generate_position()
 		interval_current = INTERVAL_MAX
-		INTERVAL_MAX*=0.90
+		if INTERVAL_MAX > 0.5:
+			INTERVAL_MAX*=0.95
 	else:
 		interval_current-=delta
 	
