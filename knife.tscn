@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://nvv01lvqikcm" path="res://knife.gd" id="1_8wt88"]
 [ext_resource type="Texture2D" uid="uid://d216k6f7becl8" path="res://missile.png" id="1_mawn3"]
+[ext_resource type="Texture2D" uid="uid://bft4n7qwyxj1r" path="res://coin.png" id="3_s4gn3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wt88"]
 size = Vector2(20, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qjenl"]
+radius = 9.0
 
 [node name="Knife" type="RigidBody2D" unique_id=1213006438]
 collision_layer = 3
@@ -18,3 +22,16 @@ texture = ExtResource("1_mawn3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1468281849]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_8wt88")
+
+[node name="coin" type="RigidBody2D" parent="." unique_id=1848346576]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="coin" unique_id=1580461267]
+texture_filter = 1
+texture = ExtResource("3_s4gn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin" unique_id=2088435348]
+position = Vector2(1, -1)
+shape = SubResource("CircleShape2D_qjenl")

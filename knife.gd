@@ -6,6 +6,8 @@ func _ready() -> void:
 	egg = get_tree().get_first_node_in_group("egg")
 	
 func _process(delta: float) -> void:
+	if egg == null:
+		egg = get_tree().get_first_node_in_group("egg")	
 	look_at(egg.position)
 	
 func _physics_process(delta: float) -> void:

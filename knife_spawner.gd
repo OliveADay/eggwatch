@@ -1,17 +1,28 @@
 extends Node2D
 
 var knife_ref = preload("res://knife.tscn")
+var egg_shell_ref = preload("res://egg shell.tscn")
 var x_bounds_outer = [-21.0,280.0]
 var x_bounds_inner = [-14.0,271.0]
 var y_bounds_outer = [-22.0,166.0]
 var y_bounds_inner = [-14.0,158.0]
+var egg:Node2D
+var egged = false
+signal done
+var knifes = []
 
 @export var INTERVAL_MAX = 5
 var interval_current = 0
 
+func _ready() -> void:
+	egg = get_tree().get_first_node_in_group("egg")
+
 func _process(delta: float) -> void:
+	if egg==null:
+		egg = get_tree().get_first_node_in_group("egg")
 	if interval_current <= 0 :
 		var knife = knife_ref.instantiate()
+		knifes.append(knife)
 		get_tree().root.add_child(knife)
 		knife.position = generate_position()
 		interval_current = INTERVAL_MAX
@@ -37,3 +48,38 @@ func generate_position():
 		pos.x = randf_range(x_bounds_outer[0],x_bounds_outer[1])
 		pos.y = randf_range(y_bounds_inner[1],y_bounds_outer[1])
 	return pos
+
+
+func _on_egg_body_entered(body: Node2D) -> void:
+	if egged:
+		return
+	var egg_shell = egg_shell_ref.instantiate()
+	get_tree().root.add_child(egg_shell)
+	egg_shell.position = egg.position
+	egg.visible = false
+	egg.monitoring = false
+	egged = true
+	
+
+
+func _on_egg_out_body_entered(body: Node2D) -> void:
+	$CanvasLayer.visible = true
+
+
+func _on_restart_pressed() -> void:
+	done.emit()
+	reset()
+	queue_free()
+
+func reset():
+	for knife in knifes:
+		if(knife==null):
+			knifes.erase(knife)
+		else:
+			knife.queue_free()
+
+
+func _on_back_mm_pressed() -> void:
+	$CanvasLayer.visible = false
+	reset()
+	get_tree().reload_current_scene()

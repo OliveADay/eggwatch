@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bk0ijf2fsvedc" path="res://knife_spawner.gd" id="1_036b0"]
 [ext_resource type="Texture2D" uid="uid://dr3l35lb4x8xm" path="res://egg-Sheet.png" id="1_f3sb7"]
-[ext_resource type="PackedScene" uid="uid://dbne6npni58we" path="res://knife.tscn" id="2_fj7yv"]
 [ext_resource type="Script" uid="uid://dwp72y4s8cqbk" path="res://hammer.gd" id="3_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://d3cmprwdxbko8" path="res://hammer.png" id="4_036b0"]
+[ext_resource type="FontFile" uid="uid://duhjsqqn8ukil" path="res://04B_11_.TTF" id="5_036b0"]
+[ext_resource type="LabelSettings" uid="uid://tphmyschar1n" path="res://main.tres" id="5_dwbse"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3sb7"]
 radius = 7.0
@@ -12,11 +13,17 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwbse"]
 size = Vector2(22, 26)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
+size = Vector2(281, 20)
+
 [node name="World" type="Node2D" unique_id=1775957039]
 script = ExtResource("1_036b0")
 
 [node name="egg" type="Area2D" parent="." unique_id=502374342 groups=["egg"]]
 position = Vector2(124, 71)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="egg" unique_id=1239039651]
@@ -27,11 +34,6 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="egg" unique_id=85380964]
 shape = SubResource("CircleShape2D_f3sb7")
-
-[node name="Knife" parent="." unique_id=1213006438 instance=ExtResource("2_fj7yv")]
-z_index = 1
-position = Vector2(138, -14)
-rotation = 1.5707964
 
 [node name="hammer" type="Area2D" parent="." unique_id=1579423027]
 collision_layer = 0
@@ -45,3 +47,53 @@ texture = ExtResource("4_036b0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hammer" unique_id=703983377]
 shape = SubResource("RectangleShape2D_dwbse")
+
+[node name="egg_out" type="Area2D" parent="." unique_id=42165639]
+position = Vector2(129, 165)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="egg_out" unique_id=43169565]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_aqk2v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=722321625]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1319202828]
+offset_right = 263.0
+offset_bottom = 147.0
+color = Color(0, 0, 0, 0.43529412)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=443786957]
+texture_filter = 1
+offset_top = 29.0
+offset_right = 256.0
+offset_bottom = 52.0
+text = "the egg broke idiot"
+label_settings = ExtResource("5_dwbse")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="restart" type="Button" parent="CanvasLayer" unique_id=616299205]
+texture_filter = 1
+offset_left = 74.0
+offset_top = 68.0
+offset_right = 180.0
+offset_bottom = 92.0
+theme_override_fonts/font = ExtResource("5_036b0")
+text = "restart"
+
+[node name="back_mm" type="Button" parent="CanvasLayer" unique_id=1046532638]
+texture_filter = 1
+offset_left = 15.0
+offset_top = 98.0
+offset_right = 243.0
+offset_bottom = 122.0
+theme_override_fonts/font = ExtResource("5_036b0")
+text = "back to main menu"
+
+[connection signal="body_entered" from="egg" to="." method="_on_egg_body_entered"]
+[connection signal="body_entered" from="egg_out" to="." method="_on_egg_out_body_entered"]
+[connection signal="pressed" from="CanvasLayer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/back_mm" to="." method="_on_back_mm_pressed"]

@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://bupxtlx1bll8g"]
+
+[ext_resource type="LabelSettings" uid="uid://tphmyschar1n" path="res://main.tres" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://w2f4nm6a5w0e" path="res://main_menu.gd" id="1_jix8l"]
+[ext_resource type="FontFile" uid="uid://duhjsqqn8ukil" path="res://04B_11_.TTF" id="2_jix8l"]
+[ext_resource type="Texture2D" uid="uid://dr3l35lb4x8xm" path="res://egg-Sheet.png" id="3_glbon"]
+
+[node name="MainMenu" type="Node2D" unique_id=1081720243]
+script = ExtResource("1_jix8l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=963179685]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=669002711]
+offset_right = 259.0
+offset_bottom = 148.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=893739369]
+texture_filter = 1
+offset_top = 26.0
+offset_right = 256.0
+offset_bottom = 49.0
+text = "Watch The Egg"
+label_settings = ExtResource("1_fu7sn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="play" type="Button" parent="CanvasLayer" unique_id=45768286]
+texture_filter = 1
+offset_left = 96.0
+offset_top = 52.0
+offset_right = 152.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("2_jix8l")
+text = "play"
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=288641902]
+texture_filter = 1
+position = Vector2(222, 50)
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer" unique_id=1833932831]
+texture_filter = 1
+position = Vector2(219, 23)
+rotation = -2.484733
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="CanvasLayer" unique_id=474816888]
+texture_filter = 1
+position = Vector2(196.00002, 21)
+rotation = -1.1525443
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D4" type="Sprite2D" parent="CanvasLayer" unique_id=2101629103]
+texture_filter = 1
+position = Vector2(163, 17.999996)
+rotation = -1.1525443
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="CanvasLayer" unique_id=647155015]
+texture_filter = 1
+position = Vector2(142, 16.999996)
+rotation = -1.1525443
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D6" type="Sprite2D" parent="CanvasLayer" unique_id=1723558961]
+texture_filter = 1
+position = Vector2(123, 16.999996)
+rotation = -3.6814876
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D7" type="Sprite2D" parent="CanvasLayer" unique_id=1546277456]
+texture_filter = 1
+position = Vector2(102.00001, 18.000002)
+rotation = -1.1525443
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D8" type="Sprite2D" parent="CanvasLayer" unique_id=805687696]
+texture_filter = 1
+position = Vector2(79, 21)
+rotation = 1.5073657
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D9" type="Sprite2D" parent="CanvasLayer" unique_id=548610135]
+texture_filter = 1
+position = Vector2(58.000008, 21.000004)
+rotation = 1.9295192
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D10" type="Sprite2D" parent="CanvasLayer" unique_id=329152128]
+texture_filter = 1
+position = Vector2(41, 23)
+rotation = -1.0487067
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D11" type="Sprite2D" parent="CanvasLayer" unique_id=1153715387]
+texture_filter = 1
+position = Vector2(29, 28)
+rotation = 1.557744
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D12" type="Sprite2D" parent="CanvasLayer" unique_id=1643421573]
+texture_filter = 1
+position = Vector2(26.000002, 39)
+rotation = -4.1789827
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D13" type="Sprite2D" parent="CanvasLayer" unique_id=188920981]
+texture_filter = 1
+position = Vector2(39, 54.999996)
+rotation = 0.588652
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D14" type="Sprite2D" parent="CanvasLayer" unique_id=288996460]
+texture_filter = 1
+position = Vector2(58, 58)
+rotation = -1.7747242
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D15" type="Sprite2D" parent="CanvasLayer" unique_id=762344900]
+texture_filter = 1
+position = Vector2(77, 59)
+rotation = 0.3661121
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D16" type="Sprite2D" parent="CanvasLayer" unique_id=594717997]
+texture_filter = 1
+position = Vector2(95.00001, 54.000008)
+rotation = -2.9890308
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D17" type="Sprite2D" parent="CanvasLayer" unique_id=1373896184]
+texture_filter = 1
+position = Vector2(155, 56)
+rotation = 0.5922991
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Sprite2D18" type="Sprite2D" parent="CanvasLayer" unique_id=1663065385]
+texture_filter = 1
+position = Vector2(181, 55.000008)
+rotation = -0.9929817
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Sprite2D19" type="Sprite2D" parent="CanvasLayer" unique_id=1736612897]
+texture_filter = 1
+position = Vector2(202, 58)
+rotation = 0.32596874
+texture = ExtResource("3_glbon")
+hframes = 2
+vframes = 2
+frame = 2
+
+[connection signal="pressed" from="CanvasLayer/play" to="." method="_on_play_pressed"]
