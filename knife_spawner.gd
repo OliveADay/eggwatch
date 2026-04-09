@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(knife)
 		knife.position = generate_position()
 		interval_current = INTERVAL_MAX
+		INTERVAL_MAX*=0.90
 	else:
 		interval_current-=delta
 	
@@ -34,3 +35,4 @@ func generate_position():
 	else:
 		pos.x = randf_range(x_bounds_outer[0],x_bounds_outer[1])
 		pos.y = randf_range(y_bounds_inner[1],y_bounds_outer[1])
+	return pos
