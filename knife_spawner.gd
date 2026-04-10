@@ -95,10 +95,11 @@ func reset():
 	if best_score < score:
 		save_best_score()
 	for knife in knifes:
-		if !is_instance_valid(knife):
+		if knife == null:
 			knifes.erase(knife)
 	for knife in knifes:
-		knife.queue_free()
+		if knife != null:
+			knife.queue_free()
 	for explosion in explosions:
 		if !is_instance_valid(explosion):
 			explosions.erase(explosion)
