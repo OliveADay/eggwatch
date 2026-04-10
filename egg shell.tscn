@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjjkf1k0nntp6"]
 
 [ext_resource type="Texture2D" uid="uid://dr3l35lb4x8xm" path="res://egg-Sheet.png" id="1_lngqt"]
+[ext_resource type="AudioStream" uid="uid://bhojxbaa2htpp" path="res://egg_break.wav" id="2_4u5ps"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u5ps"]
 
@@ -50,3 +51,7 @@ texture = ExtResource("1_lngqt")
 hframes = 2
 vframes = 2
 frame = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1616386322]
+stream = ExtResource("2_4u5ps")
+autoplay = true

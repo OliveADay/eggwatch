@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c7mo1m0tvttx4" path="res://bomb.gd" id="1_4fn8o"]
 [ext_resource type="Texture2D" uid="uid://clrbjf3gya3bc" path="res://bomb-Sheet.png" id="1_573fp"]
+[ext_resource type="AudioStream" uid="uid://diy0nua3fk8m7" path="res://explosion.wav" id="3_nfxiy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fn8o"]
 size = Vector2(51, 50)
@@ -43,6 +44,10 @@ gravity_scale = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="egg_killer" unique_id=62065674]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_nfxiy")
+
+[node name="explosion" type="AudioStreamPlayer2D" parent="." unique_id=1710344271]
+stream = ExtResource("3_nfxiy")
+autoplay = true
 
 [connection signal="timeout" from="explod_main" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="explod_hold" to="." method="_on_explod_hold_timeout"]

@@ -14,12 +14,17 @@ var knifes = []
 var coins = 0
 var score = 0
 var explosions = []
+var coin_press= false
+var scoreFilePath=  "user://score.cfg"
+var best_score = 0
+var to_be_erazed = []
 
 @export var INTERVAL_MAX = 5
 var interval_current = 0
 
 func _ready() -> void:
 	egg = get_tree().get_first_node_in_group("egg")
+	load_best_score()
 
 func _process(delta: float) -> void:
 	if egg==null:
@@ -35,13 +40,15 @@ func _process(delta: float) -> void:
 			INTERVAL_MAX*=0.95
 	else:
 		interval_current-=delta
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and coins >= 3:
+	if Input.is_action_just_pressed("mouse2") and coins >= 3:
 		var bomb = bomb_ref.instantiate()
 		explosions.append(bomb)
 		get_tree().root.add_child(bomb)
 		bomb.position = get_global_mouse_position()
 		coins-=3
-	$CanvasLayer2/Label.text = "gold: "+str(coins)
+	$CanvasLayer2/gold.text = "gold: "+str(coins)
+	$CanvasLayer2/score.text = "score: "+str(score)
+	
 	
 
 func generate_position():
@@ -81,26 +88,48 @@ func _on_egg_out_body_entered(body: Node2D) -> void:
 func _on_restart_pressed() -> void:
 	done.emit()
 	reset()
+	for child in get_children():
+		child.queue_free()
 	queue_free()
-
 func reset():
+	if best_score < score:
+		save_best_score()
 	for knife in knifes:
-		if(knife==null):
+		if !is_instance_valid(knife):
 			knifes.erase(knife)
-		else:
-			knife.queue_free()
+	for knife in knifes:
+		knife.queue_free()
 	for explosion in explosions:
-		if explosion==null:
+		if !is_instance_valid(explosion):
 			explosions.erase(explosion)
-		else:
-			explosion.queue_free()
+	for explosion in explosions:
+		explosion.queue_free()
 
 
 func _on_back_mm_pressed() -> void:
 	$CanvasLayer.visible = false
 	reset()
+	for child in get_children():
+		child.queue_free()
+	queue_free()
 	get_tree().reload_current_scene()
 
 
 func _on_hammer_coined(amount: Variant) -> void:
 	coins+=amount
+	score+=1
+	
+	
+func load_best_score():
+	var config = ConfigFile.new()
+	var error = config.load(scoreFilePath)
+	if error!=OK:
+		best_score = 0
+		return
+	best_score = config.get_value("main","best_score")
+	
+func save_best_score():
+	var config = ConfigFile.new()
+	best_score = score
+	config.set_value("main","best_score",best_score)
+	config.save(scoreFilePath)

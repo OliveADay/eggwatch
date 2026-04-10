@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://d3cmprwdxbko8" path="res://hammer.png" id="4_036b0"]
 [ext_resource type="FontFile" uid="uid://duhjsqqn8ukil" path="res://04B_11_.TTF" id="5_036b0"]
 [ext_resource type="LabelSettings" uid="uid://tphmyschar1n" path="res://main.tres" id="5_dwbse"]
+[ext_resource type="AudioStream" uid="uid://bixfkrbx54jyk" path="res://hammer.wav" id="5_pkg7o"]
+[ext_resource type="AudioStream" uid="uid://cqq2kxef3klmi" path="res://click.wav" id="8_gbfbk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3sb7"]
 radius = 7.0
@@ -47,6 +49,9 @@ texture = ExtResource("4_036b0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hammer" unique_id=703983377]
 shape = SubResource("RectangleShape2D_dwbse")
+
+[node name="hit" type="AudioStreamPlayer2D" parent="hammer" unique_id=1276473845]
+stream = ExtResource("5_pkg7o")
 
 [node name="egg_out" type="Area2D" parent="." unique_id=42165639]
 position = Vector2(129, 165)
@@ -95,16 +100,30 @@ text = "back to main menu"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1788253928]
 
-[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1385794001]
+[node name="gold" type="Label" parent="CanvasLayer2" unique_id=1385794001]
 texture_filter = 1
-offset_left = 179.0
-offset_top = 121.0
-offset_right = 256.0
-offset_bottom = 144.0
+offset_left = 89.0
+offset_top = 125.0
+offset_right = 166.0
+offset_bottom = 148.0
 text = "gold: 0"
 label_settings = ExtResource("5_dwbse")
-horizontal_alignment = 3
+horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="score" type="Label" parent="CanvasLayer2" unique_id=151201755]
+texture_filter = 1
+offset_left = 89.0
+offset_top = 114.0
+offset_right = 166.0
+offset_bottom = 137.0
+text = "score: 0"
+label_settings = ExtResource("5_dwbse")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="click" type="AudioStreamPlayer2D" parent="." unique_id=413112546]
+stream = ExtResource("8_gbfbk")
 
 [connection signal="body_entered" from="egg" to="." method="_on_egg_body_entered"]
 [connection signal="body_entered" from="egg_out" to="." method="_on_egg_out_body_entered"]
