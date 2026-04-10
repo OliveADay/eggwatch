@@ -21,6 +21,7 @@ var to_be_erazed = []
 
 @export var INTERVAL_MAX = 5
 var interval_current = 0
+var spawning = true
 
 func _ready() -> void:
 	egg = get_tree().get_first_node_in_group("egg")
@@ -29,7 +30,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if egg==null:
 		egg = get_tree().get_first_node_in_group("egg")
-	if interval_current <= 0 :
+	if interval_current <= 0 and spawning:
 		var knife = knife_ref.instantiate()
 		knifes.append(knife)
 		get_tree().root.add_child(knife)
@@ -75,6 +76,7 @@ func _on_egg_body_entered(body: Node2D) -> void:
 	var egg_shell = egg_shell_ref.instantiate()
 	get_tree().root.add_child(egg_shell)
 	egg_shell.position = egg.position
+	spawning = false
 	egg.visible = false
 	egg.monitoring = false
 	egged = true
@@ -83,6 +85,7 @@ func _on_egg_body_entered(body: Node2D) -> void:
 
 func _on_egg_out_body_entered(body: Node2D) -> void:
 	$CanvasLayer.visible = true
+	body.get_parent().queue_free()
 
 
 func _on_restart_pressed() -> void:

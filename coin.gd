@@ -13,4 +13,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if(decrease_amount < 1):
 		decrease_amount+=decrease_increment
+	else:
+		queue_free()
 	
