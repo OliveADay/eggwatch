@@ -12,6 +12,8 @@ var egged = false
 signal done
 var knifes = []
 var coins = 0
+var score = 0
+var explosions = []
 
 @export var INTERVAL_MAX = 5
 var interval_current = 0
@@ -27,16 +29,19 @@ func _process(delta: float) -> void:
 		knifes.append(knife)
 		get_tree().root.add_child(knife)
 		knife.position = generate_position()
+		knife.coined.connect(_on_hammer_coined)
 		interval_current = INTERVAL_MAX
 		if INTERVAL_MAX > 0.5:
 			INTERVAL_MAX*=0.95
 	else:
 		interval_current-=delta
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and coins >=3:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and coins >= 3:
 		var bomb = bomb_ref.instantiate()
+		explosions.append(bomb)
 		get_tree().root.add_child(bomb)
 		bomb.position = get_global_mouse_position()
 		coins-=3
+	$CanvasLayer2/Label.text = "gold: "+str(coins)
 	
 
 func generate_position():
@@ -84,6 +89,11 @@ func reset():
 			knifes.erase(knife)
 		else:
 			knife.queue_free()
+	for explosion in explosions:
+		if explosion==null:
+			explosions.erase(explosion)
+		else:
+			explosion.queue_free()
 
 
 func _on_back_mm_pressed() -> void:
@@ -94,4 +104,3 @@ func _on_back_mm_pressed() -> void:
 
 func _on_hammer_coined(amount: Variant) -> void:
 	coins+=amount
-	$CanvasLayer2/Label.text = "gold: "+str(coins)

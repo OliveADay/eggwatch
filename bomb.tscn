@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://clrbjf3gya3bc" path="res://bomb-Sheet.png" id="1_573fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4fn8o"]
-size = Vector2(41, 37)
+size = Vector2(51, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfxiy"]
+size = Vector2(8, 8)
 
 [node name="Bomb" type="Area2D" unique_id=441117945]
 position = Vector2(107, 40)
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_4fn8o")
 metadata/_edit_group_ = true
@@ -17,18 +20,29 @@ metadata/_edit_group_ = true
 texture_filter = 1
 texture = ExtResource("1_573fp")
 hframes = 2
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2115479228]
-position = Vector2(0.5, 0.5)
+position = Vector2(1.5, 2)
 shape = SubResource("RectangleShape2D_4fn8o")
 
 [node name="explod_main" type="Timer" parent="." unique_id=70842187]
+wait_time = 0.001
 one_shot = true
 autostart = true
 
 [node name="explod_hold" type="Timer" parent="." unique_id=693201760]
-wait_time = 0.4
+wait_time = 5.0
 one_shot = true
+
+[node name="egg_killer" type="RigidBody2D" parent="." unique_id=369660260]
+collision_layer = 16384
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="egg_killer" unique_id=62065674]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_nfxiy")
 
 [connection signal="timeout" from="explod_main" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="explod_hold" to="." method="_on_explod_hold_timeout"]
