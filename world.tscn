@@ -93,7 +93,21 @@ offset_bottom = 122.0
 theme_override_fonts/font = ExtResource("5_036b0")
 text = "back to main menu"
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1788253928]
+
+[node name="Label" type="Label" parent="CanvasLayer2" unique_id=1385794001]
+texture_filter = 1
+offset_left = 204.0
+offset_top = 121.0
+offset_right = 256.0
+offset_bottom = 144.0
+text = "gold: 0"
+label_settings = ExtResource("5_dwbse")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="egg" to="." method="_on_egg_body_entered"]
+[connection signal="coined" from="hammer" to="." method="_on_hammer_coined"]
 [connection signal="body_entered" from="egg_out" to="." method="_on_egg_out_body_entered"]
 [connection signal="pressed" from="CanvasLayer/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/back_mm" to="." method="_on_back_mm_pressed"]

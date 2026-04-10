@@ -2,6 +2,7 @@ extends Node2D
 
 var knife_ref = preload("res://knife.tscn")
 var egg_shell_ref = preload("res://egg shell.tscn")
+var bomb_ref = preload("res://bomb.tscn")
 var x_bounds_outer = [-21.0,280.0]
 var x_bounds_inner = [-14.0,271.0]
 var y_bounds_outer = [-22.0,166.0]
@@ -10,6 +11,7 @@ var egg:Node2D
 var egged = false
 signal done
 var knifes = []
+var coins = 0
 
 @export var INTERVAL_MAX = 5
 var interval_current = 0
@@ -30,6 +32,11 @@ func _process(delta: float) -> void:
 			INTERVAL_MAX*=0.95
 	else:
 		interval_current-=delta
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and coins >=3:
+		var bomb = bomb_ref.instantiate()
+		get_tree().root.add_child(bomb)
+		bomb.position = get_global_mouse_position()
+		coins-=3
 	
 
 func generate_position():
@@ -83,3 +90,8 @@ func _on_back_mm_pressed() -> void:
 	$CanvasLayer.visible = false
 	reset()
 	get_tree().reload_current_scene()
+
+
+func _on_hammer_coined(amount: Variant) -> void:
+	coins+=amount
+	$CanvasLayer2/Label.text = "gold: "+str(coins)
